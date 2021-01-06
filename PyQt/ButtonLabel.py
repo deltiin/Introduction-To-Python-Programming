@@ -39,7 +39,7 @@ class Ui_MainWindow(object):
 
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(25, 120, 350, 50))
-        self.label.setText("Set Text")
+        self.label.setText("Hello World")
         self.label.setObjectName("label")
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -52,9 +52,13 @@ class Ui_MainWindow(object):
 
     def buttonClick1(self):
         print('Button 1 Pressed')
+        self.label.setText('Button 1 Pressed')
+        self.label.move(25,120)
 
     def buttonClick2(self):
         print('Button 2 Pressed')
+        self.label.setText('Button 2 Pressed')
+        self.label.move(225,120)
 
 
 if __name__ == "__main__":
