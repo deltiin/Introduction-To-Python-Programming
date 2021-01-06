@@ -28,16 +28,20 @@ class Ui_MainWindow(object):
         self.pushButton.setText("Button1")
         self.pushButton.setObjectName("pushButton")
 
+        self.pushButton.clicked.connect(self.buttonClick1)
+
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(225, 50, 150, 50))
         self.pushButton_2.setText("Button2")
         self.pushButton_2.setObjectName("pushButton_2")
 
+        self.pushButton_2.clicked.connect(self.buttonClick2)
+
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(25, 120, 350, 50))
         self.label.setText("Set Text")
         self.label.setObjectName("label")
-        
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -45,6 +49,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         pass
+
+    def buttonClick1(self):
+        print('Button 1 Pressed')
+
+    def buttonClick2(self):
+        print('Button 2 Pressed')
 
 
 if __name__ == "__main__":
