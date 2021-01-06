@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>325</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Temperature Converter</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_EnterTemperature">
+    <property name="geometry">
+     <rect>
+      <x>25</x>
+      <y>25</y>
+      <width>200</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string notr="true">Enter Temperature</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_TemperatureInput">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>25</y>
+      <width>125</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string notr="true">0</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>110</y>
+      <width>175</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="currentText">
+     <string notr="true">Celcius</string>
+    </property>
+    <item>
+     <property name="text">
+      <string notr="true">Celcius</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string notr="true">Farhenheit</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string notr="true">Kelvin</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_ConvertFrom">
+    <property name="geometry">
+     <rect>
+      <x>25</x>
+      <y>100</y>
+      <width>150</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string notr="true">Convert From:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_2">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>185</y>
+      <width>175</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string notr="true">Celcius</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string notr="true">Farhenheit</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string notr="true">Kelvin</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_ConvertTo">
+    <property name="geometry">
+     <rect>
+      <x>25</x>
+      <y>175</y>
+      <width>150</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string notr="true">Convert To:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Convert">
+    <property name="geometry">
+     <rect>
+      <x>25</x>
+      <y>250</y>
+      <width>150</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string notr="true">Convert</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_TemperatureOutput">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>250</y>
+      <width>150</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string notr="true">0 °C</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
