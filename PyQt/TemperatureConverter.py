@@ -12,6 +12,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
+    def __init__(self):
+        self.convertFromState = None
+        self.convertToState = None
+        self.kelvinTemperature = 0
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(400, 325)
@@ -50,6 +55,8 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.setItemText(2, "Kelvin")
 
+        self.comboBox.currentIndexChanged.connect(self.selectionChangeConvertFrom)
+
         self.label_ConvertFrom = QtWidgets.QLabel(self.centralwidget)
         self.label_ConvertFrom.setGeometry(QtCore.QRect(25, 100, 150, 50))
         font = QtGui.QFont()
@@ -69,6 +76,8 @@ class Ui_MainWindow(object):
         self.comboBox_2.addItem("")
         self.comboBox_2.setItemText(1, "Kelvin")
 
+        self.comboBox_2.currentIndexChanged.connect(self.selectionChangeConvertTo)
+
         self.label_ConvertTo = QtWidgets.QLabel(self.centralwidget)
         self.label_ConvertTo.setGeometry(QtCore.QRect(25, 175, 150, 50))
         font = QtGui.QFont()
@@ -85,6 +94,8 @@ class Ui_MainWindow(object):
         self.pushButton_Convert.setText("Convert")
         self.pushButton_Convert.setObjectName("pushButton_Convert")
 
+        self.pushButton_Convert.clicked.connect(self.convertTemperatureUpdateLabel)
+
         self.label_TemperatureOutput = QtWidgets.QLabel(self.centralwidget)
         self.label_TemperatureOutput.setGeometry(QtCore.QRect(200, 250, 150, 50))
         font = QtGui.QFont()
@@ -92,7 +103,7 @@ class Ui_MainWindow(object):
         self.label_TemperatureOutput.setFont(font)
         self.label_TemperatureOutput.setText("0 °C")
         self.label_TemperatureOutput.setObjectName("label_TemperatureOutput")
-        
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -101,6 +112,60 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         pass
 
+    def selectionChangeConvertFrom(self):
+        self.convertFromState = self.comboBox.currentText()
+        print(self.convertFromState)
+        if self.convertFromState == 'Celcius':
+            self.comboBox_2.setItemText(0, "Fahrenheit")
+            self.comboBox_2.setItemText(1, "Kelvin")
+        elif self.convertFromState == 'Kelvin':
+            self.comboBox_2.setItemText(0, "Celcius")
+            self.comboBox_2.setItemText(1, "Fahrenheit")
+        elif self.convertFromState == 'Fahrenheit':
+            self.comboBox_2.setItemText(0, "Celcius")
+            self.comboBox_2.setItemText(1, "Kelvin")
+        else:
+            pass
+
+    def selectionChangeConvertTo(self):
+        self.convertToState = self.comboBox_2.currentText()
+        print(self.convertToState)
+
+    def convertTemperatureUpdateLabel(self):
+        self.convertFromState = self.comboBox.currentText()
+        self.convertToState = self.comboBox_2.currentText()
+
+        # inputTemperature = self.lineEdit_TemperatureInput.text()
+        # print(inputTemperature)
+        try:
+            inputTemperature = float(self.lineEdit_TemperatureInput.text())
+        except ValueError:
+            inputTemperature = 0.0
+            print('Enter a Number')
+
+        
+        if self.convertFromState == 'Celcius':
+            self.kelvinTemperature = inputTemperature + 273.15
+        elif self.convertFromState == 'Kelvin':
+             self.kelvinTemperature = inputTemperature
+        elif self.convertFromState == 'Fahrenheit':
+            self.kelvinTemperature =  (inputTemperature - 32.0) * (5/9) + 273.15
+        else:
+            pass
+
+        # # print(inputTemperature, self.kelvinTemperature)
+
+        if self.convertToState == 'Celcius':
+            outputTemperature = self.kelvinTemperature - 273.15
+            self.label_TemperatureOutput.setText(str(round(outputTemperature,2)) + " °C")
+        elif self.convertToState == 'Kelvin':
+            outputTemperature = self.kelvinTemperature
+            self.label_TemperatureOutput.setText(str(round(outputTemperature,2)) + " °K")
+        elif self.convertToState == 'Fahrenheit':
+            outputTemperature =  (self.kelvinTemperature - 273.15) * (9/5) + 32
+            self.label_TemperatureOutput.setText(str(round(outputTemperature,2)) + " °F")
+        else:
+            pass
 
 if __name__ == "__main__":
     import sys
